@@ -24,5 +24,5 @@ int main() {
         location += bearing * amount;
     }
 
-    std::cout << location.real() + location.imag() << '\n';
+    std::cout << std::abs(location.real()) + std::abs(location.imag()) << '\n';
 }
