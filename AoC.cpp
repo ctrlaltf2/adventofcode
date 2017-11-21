@@ -12,7 +12,9 @@ void usage(char * progname) {
 }
 
 int main(int argc, char ** argv) {
-    std::map<std::string, std::function<void(std::ostream&, std::istream&, bool)>> funcMap { {"2016-1", y16day1} };
+    std::map<std::string, std::function<void(std::ostream&, std::istream&, bool)>> funcMap {
+        {"2016-1", y16day1},
+        {"2016-2", y16day2} };
   
     std::string mapkey;
     bool part2 = false;
