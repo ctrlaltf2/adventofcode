@@ -22,31 +22,21 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
                        ' ', 'A', 'B', 'C', ' ',
                        ' ', ' ', 'D', ' ', ' '};
 
-    auto solve = [&os, &is](int startx, int starty, auto pad) {
+    auto solve = [&os, &is](int startx, int starty, auto& pad) {
         int x{startx}, y{starty};
         for(std::string str;std::getline(is, str, '\n');) {
             for(const auto& c : str) {
                 int dx = x, dy = y;
-                switch(c) {
-                    case 'U':
-                        dy -= 1;
-                        break;
-                    case 'D':
-                        dy += 1;
-                        break;
-                    case 'L':
-                        dx -= 1;
-                        break;
-                    case 'R':
-                        dx += 1;
-                }
+
+                dy += (c == 'D') - (c == 'U');
+                dx += (c == 'R') - (c == 'L');
+
                 dx = std::clamp(dx, 0, pad.maxX - 1);
                 dy = std::clamp(dy, 0, pad.maxY - 1);
 
-                if(pad.buttons[dy][dx] != ' ') {
-                    x = dx;
-                    y = dy;
-                }
+                if(pad.buttons[dy][dx] != ' ')
+                    x = dx, y = dy;
+
             }
             os << pad.buttons[y][x];
         }
@@ -56,4 +46,6 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
         solve(2, 2, p2pad);
     else
         solve(1, 1, p1pad);
+
+    os << '\n';
 }
