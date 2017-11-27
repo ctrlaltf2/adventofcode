@@ -24,7 +24,7 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
 
     auto solve = [&os, &is](int startx, int starty, auto& pad) {
         int x{startx}, y{starty};
-        for(std::string str;std::getline(is, str, '\n');) {
+        for(std::string str;std::getline(is, str, '\n');os << pad.buttons[y][x])
             for(const auto& c : str) {
                 int dx = x, dy = y;
 
@@ -38,8 +38,6 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
                     x = dx, y = dy;
 
             }
-            os << pad.buttons[y][x];
-        }
     };
 
     if(part2)
