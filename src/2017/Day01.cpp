@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 
 void y17day1(std::ostream& os, std::istream& is, bool part2) {
 
