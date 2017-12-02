@@ -9,3 +9,4 @@ void y16day3(std::ostream& os, std::istream& is, bool part2);
 
 // 2017 --------------
 void y17day1(std::ostream& os, std::istream& is, bool part2);
+void y17day2(std::ostream& os, std::istream& is, bool part2);
