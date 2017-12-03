@@ -17,10 +17,11 @@ int main(int argc, char ** argv) {
         {"2016-2", y16day2},
         {"2016-3", y16day3},
         {"2017-1", y17day1},
-        {"2017-2", y17day2} };
+        {"2017-2", y17day2},
+        {"2017-3", y17day3} };
   
     std::string mapkey;
-    bool part2 = false;
+    bool part2 = false, eval = false;
     if(argc > 1) {
         if(std::string(argv[1]) == "all")
             mapkey = "all";
@@ -37,11 +38,18 @@ int main(int argc, char ** argv) {
     else
         usage(argv[0]);
 
+    if(argc > 4)
+        if(std::string(argv[4]) == "eval")
+            eval = true;
+
     if(mapkey != "all") {
         try {
             auto f = funcMap.at(mapkey);
-            std::ifstream data("data/" + mapkey + ".txt");
-            f(std::cout, data, part2);
+            if(!eval) {
+                std::ifstream data("data/" + mapkey + ".txt");
+                f(std::cout, data, part2);
+            } else
+                f(std::cout, std::cin, part2);
         } catch(std::out_of_range e) {
             usage(argv[0]);
         }
