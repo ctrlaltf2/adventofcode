@@ -7,7 +7,7 @@
 #include <sstream>
 
 void usage(char * progname) {
-    std::cout << "Usage: " << progname << " <year> " << "<day> " << " <part '1' or '2'>\n";
+    std::cout << "Usage: " << progname << " <year> " << "<day> " << " <part> [eval]\n";
     std::exit(-1);
 }
 
