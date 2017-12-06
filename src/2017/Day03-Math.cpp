@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-void y17day3(std::ostream& os, std::istream& is, bool part2) {
+void y17day3m(std::ostream& os, std::istream& is, bool part2) {
     int port;
     is >> port;
 
