@@ -14,11 +14,10 @@ void y17day4(std::ostream& os, std::istream& is, bool part2) {
 
         std::set<std::string> seen;
         valid += std::all_of(words.begin(), words.end(),
-            [&seen, part2](const auto& word) {
-                std::string c = word;
+            [&seen, part2](auto word) {
                 if(part2)
-                    std::sort(c.begin(), c.end());
-                return seen.insert(c).second;
+                    std::sort(word.begin(), word.end());
+                return seen.insert(word).second;
             });
     }
 
