@@ -13,3 +13,4 @@ void y17day2(std::ostream& os, std::istream& is, bool part2);
 void y17day3(std::ostream& os, std::istream& is, bool part2);
 void y17day4(std::ostream& os, std::istream& is, bool part2);
 void y17day5(std::ostream& os, std::istream& is, bool part2);
+void y17day6(std::ostream& os, std::istream& is, bool part2);
