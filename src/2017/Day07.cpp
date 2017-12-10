@@ -1,14 +1,10 @@
 #include <algorithm>
 #include <iostream>
-#include <iomanip>
-#include <regex>
-#include <memory>
-#include <string>
-#include <sstream>
 #include <map>
+#include <regex>
+#include <sstream>
+#include <string>
 #include <vector>
-
-std::regex const kSingle {R"((\w{3,})\s\((\d+)\)\n)"}, kMultiple {R"((\w{3,})\s\((\d+)\)\s->\s((\w{3,}),\s)+(\w{3,}))"};
 
 struct Program {
     std::string name;
@@ -42,6 +38,7 @@ public:
         for(auto& p : m_lookup) {
             [[maybe_unused]]
             auto& [name, prog] = p;
+
             for(auto& cname : prog.cnames) {
                 prog.children.push_back(&m_lookup.at(cname));
                 m_lookup.at(cname).parent = &prog;
