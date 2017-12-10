@@ -21,7 +21,8 @@ int main(int argc, char ** argv) {
         {"2017-3", y17day3},
         {"2017-4", y17day4},
         {"2017-5", y17day5},
-        {"2017-6", y17day6} };
+        {"2017-6", y17day6},
+        {"2017-7", y17day7} };
   
     std::string mapkey;
     bool part2 = false, eval = false;
