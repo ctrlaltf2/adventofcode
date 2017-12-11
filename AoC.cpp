@@ -24,7 +24,8 @@ int main(int argc, char ** argv) {
         {"2017-5", y17day5},
         {"2017-6", y17day6},
         {"2017-7", y17day7},
-        {"2017-8", y17day8} };
+        {"2017-8", y17day8},
+        {"2017-9", y17day9} };
 
     try {
         program_options::options_description desc{"Options"};
@@ -80,11 +81,11 @@ int main(int argc, char ** argv) {
             auto f = funcMap.at(mapkey);
             std::ifstream data("data/" + mapkey + ".txt");
 
-            if(part == "1") {
+            if(part == "1")
                 f(std::cout, (eval ? std::cin : data), false);
-            } else if(part == "2") {
+            else if(part == "2")
                 f(std::cout, (eval ? std::cin : data), true);
-            } else if(part == "both") {
+            else if(part == "both") {
                 f(std::cout, (eval ? std::cin : data), false);
 
                 data.clear();
@@ -92,6 +93,7 @@ int main(int argc, char ** argv) {
 
                 f(std::cout, (eval ? std::cin : data), true);
             }
+
         } catch(std::out_of_range e) {
             std::cout << "Invalid year/problem\n";
             std::cout << desc << '\n';
