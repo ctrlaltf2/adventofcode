@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
     std::map<std::string, std::function<void(std::ostream&, std::istream&, bool)>> const funcMap {
         {"2016-1", y16day1},
         {"2016-2", y16day2},
-        {"2016-10", y16day10},
+        {"2016-12", y16day12},
         {"2017-1", y17day1},
         {"2017-2", y17day2},
         {"2017-3", y17day3},

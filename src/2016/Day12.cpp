@@ -16,7 +16,7 @@ struct Instruction {
     std::string op, param1, param2;
 };
 
-void y16day10(std::ostream& os, std::istream& is, bool part2) {
+void y16day12(std::ostream& os, std::istream& is, bool part2) {
     std::map<char, int> registers;
     std::vector<Instruction> memory;
 
