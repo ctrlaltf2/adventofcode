@@ -24,7 +24,8 @@ int main(int argc, char ** argv) {
         {"2017-6", y17day6},
         {"2017-7", y17day7},
         {"2017-8", y17day8},
-        {"2017-9", y17day9} };
+        {"2017-9", y17day9},
+        {"2017-10", y17day10} };
 
     try {
         program_options::options_description desc{"Options"};
