@@ -40,6 +40,17 @@ class Village {
             }
             return total;
         }
+
+        int part2() {
+            int groups{0};
+            for(const auto& [id, connections] : m_village) {
+                if(!m_seen[id]) {
+                    part1(id);
+                    ++groups;
+                }
+            }
+            return groups;
+        }
 };
 
 void y17day12(std::ostream& os, std::istream& is, bool part2) {
@@ -48,6 +59,9 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
     for(std::string ln;std::getline(is, ln, '\n');)
         ville(ln);
 
-    std::cout << ville.part1(0) + 1 << '\n';
+    if(part2)
+        std::cout << ville.part2() << '\n';
+    else
+        std::cout << ville.part1(0) + 1 << '\n';
 
 }
