@@ -5,60 +5,51 @@
 #include <sstream>
 #include <vector>
 
-using ProgramID = int;
-using Pipes = std::vector<ProgramID>;
-
-class Village {
-    std::map<ProgramID, Pipes> m_village;
-    std::map<ProgramID, bool> m_seen;
-
-    public:
-        void operator()(std::string line) {
-            std::regex re{R"([^\d]+)"};
-            line = std::regex_replace(line, re, " ");
-
-            std::istringstream iss{line};
-            int id;
-            iss >> id;
-
-            Pipes& connected = m_village[id];
-
-            for(int temp;iss >> temp;)
-                connected.push_back(temp);
-        }
-
-        int part1(int start) {
-            int total{0};
-            m_seen[start] = true;
-            for(const auto& connection : m_village[start]) {
-                if(m_seen[connection] == false) {
-                    ++total;
-                    total += part1(connection);
-
-                    m_seen[connection] = true;
-                }
-            }
-            return total;
-        }
-
-        int part2() {
-            int groups{0};
-            for(const auto& [id, connections] : m_village) {
-                if(!m_seen[id]) {
-                    part1(id);
-                    ++groups;
-                }
-            }
-            return groups;
-        }
-};
-
 void y17day12(std::ostream& os, std::istream& is, bool part2) {
-    Village ville;
 
-    for(std::string ln;std::getline(is, ln, '\n');)
-        ville(ln);
+    std::regex const nonDigits{R"([^\d]+)"};
+    std::map<int, std::vector<int>> village;
+    std::map<int, bool> seen;
 
-    os << (part2 ? ville.part2() : ville.part1(0) + 1) << '\n';
+    for(std::string ln;std::getline(is, ln, '\n');) {
+        ln = std::regex_replace(ln, nonDigits, " ");
+
+        std::istringstream iss{ln};
+        int id;
+        iss >> id;
+
+        std::vector<int>& connected = village[id];
+
+        for(;iss >> id;)
+            connected.push_back(id);
+    }
+
+
+    std::function<int(int)> fPart1 = [&](int start) {
+        int total{0};
+        seen[start] = true;
+        for(const auto& connection : village[start]) {
+            if(seen[connection] == false) {
+                ++total;
+                total += fPart1(connection);
+
+                seen[connection] = true;
+            }
+        }
+        return total;
+    };
+
+    std::function<int()> fPart2 = [&]() {
+        int groups{0};
+        for(const auto& [id, connections] : village) {
+            if(!seen[id]) {
+                fPart1(id);
+                ++groups;
+            }
+        }
+            return groups;
+    };
+
+    os << (part2 ? fPart2() : fPart1(0) + 1) << '\n';
 
 }
