@@ -59,9 +59,6 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
     for(std::string ln;std::getline(is, ln, '\n');)
         ville(ln);
 
-    if(part2)
-        std::cout << ville.part2() << '\n';
-    else
-        std::cout << ville.part1(0) + 1 << '\n';
+    os << (part2 ? ville.part2() : ville.part1(0) + 1) << '\n';
 
 }

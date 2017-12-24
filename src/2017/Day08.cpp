@@ -39,8 +39,6 @@ void y17day8(std::ostream& os, std::istream& is, bool part2) {
 
 
     }
-    if(part2)
-        os << max << '\n';
-    else
-        os << std::max_element(registers.begin(), registers.end(), [](const auto& a, const auto& b) { return a.second < b.second; })->second << '\n';
+
+    os << (part2 ? max : std::max_element(registers.begin(), registers.end(), [](const auto& a, const auto& b) { return a.second < b.second; })->second) << '\n';
 }

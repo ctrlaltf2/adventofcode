@@ -15,8 +15,5 @@ void y17day6(std::ostream& os, std::istream& is, bool part2) {
                 max = bank.begin();
     }
 
-    if(part2)
-        os << seen.size() - seen[bank] << '\n';
-    else
-        os << seen.size() << '\n';
+    os << (part2 ? seen.size() - seen[bank] : seen.size()) << '\n';
 }

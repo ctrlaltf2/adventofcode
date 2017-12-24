@@ -48,8 +48,5 @@ void y17day11(std::ostream& os, std::istream& is, bool part2) {
         max = std::max(max, distance(x, y));
     }
 
-    if(part2)
-        os << max << '\n';
-    else
-        os << distance(x, y) << '\n';
+    os << (part2 ? max : distance(x, y)) << '\n';
 }

@@ -47,8 +47,6 @@ void y17day9(std::ostream& os, std::istream& is, bool part2) {
             }
         }
     }
-    if(part2)
-        os << removed << '\n';
-    else
-        os << total << '\n';
+
+    os << (part2 ? removed : total) << '\n';
 }
