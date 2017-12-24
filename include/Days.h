@@ -7,6 +7,7 @@ void y16day1(std::ostream& os, std::istream& is, bool part2);
 void y16day2(std::ostream& os, std::istream& is, bool part2);
 void y16day3(std::ostream& os, std::istream& is, bool part2);
 void y16day12(std::ostream& os, std::istream& is, bool part2);
+void y16day23(std::ostream& os, std::istream& is, bool part2);
 
 // 2017 --------------
 void y17day1(std::ostream& os, std::istream& is, bool part2);
@@ -20,3 +21,4 @@ void y17day8(std::ostream& os, std::istream& is, bool part2);
 void y17day9(std::ostream& os, std::istream& is, bool part2);
 void y17day10(std::ostream& os, std::istream& is, bool part2);
 void y17day11(std::ostream& os, std::istream& is, bool part2);
+void y17day12(std::ostream& os, std::istream& is, bool part2);
