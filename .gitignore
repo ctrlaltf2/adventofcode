@@ -7,7 +7,7 @@
 *.o
 *.obj
 
-# Precompiled Headers
+# Precompiled Headers"
 *.gch
 *.pch
 
@@ -39,3 +39,4 @@ Makefile
 
 # Project specific
 adventofcode
+vgcore*

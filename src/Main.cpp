@@ -17,6 +17,7 @@ int main(int argc, char ** argv) {
         {"2016-1", y16day1},
         {"2016-2", y16day2},
         {"2016-12", y16day12},
+        {"2016-23", y16day23},
         {"2017-1", y17day1},
         {"2017-2", y17day2},
         {"2017-3", y17day3},
@@ -27,7 +28,8 @@ int main(int argc, char ** argv) {
         {"2017-8", y17day8},
         {"2017-9", y17day9},
         {"2017-10", y17day10},
-        {"2017-11", y17day11} };
+        {"2017-11", y17day11},
+        {"2017-12", y17day12} };
 
     try {
         program_options::options_description desc{"Options"};
