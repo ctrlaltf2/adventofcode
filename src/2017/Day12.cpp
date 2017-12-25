@@ -5,13 +5,14 @@
 #include <sstream>
 #include <vector>
 
+
 void y17day12(std::ostream& os, std::istream& is, bool part2) {
 
     std::regex const nonDigits{R"([^\d]+)"};
     std::map<int, std::vector<int>> village;
     std::map<int, bool> seen;
 
-    for(std::string ln;std::getline(is, ln, '\n');) {
+    for(std::string ln;std::getline(is, ln);) {
         ln = std::regex_replace(ln, nonDigits, " ");
 
         std::istringstream iss{ln};
@@ -19,13 +20,12 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
         iss >> id;
 
         std::vector<int>& connected = village[id];
-
-        for(;iss >> id;)
-            connected.push_back(id);
+        while(iss >> id)
+            connected.emplace_back(id);
     }
 
 
-    std::function<int(int)> fPart1 = [&](int start) {
+    std::function<int(int)> const fPart1 = [&](const int&& start) {
         int total{0};
         seen[start] = true;
         for(const auto& connection : village[start]) {
@@ -39,15 +39,16 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
         return total;
     };
 
-    std::function<int()> fPart2 = [&]() {
+    std::function<int()> const fPart2 = [&]() {
         int groups{0};
-        for(const auto& [id, connections] : village) {
+        for(const auto& [id, connected] : village) {
+//            const int* id = &(pair.first);
             if(!seen[id]) {
                 fPart1(id);
                 ++groups;
             }
         }
-            return groups;
+        return groups;
     };
 
     os << (part2 ? fPart2() : fPart1(0) + 1) << '\n';
