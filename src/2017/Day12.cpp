@@ -42,7 +42,6 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
     std::function<int()> const fPart2 = [&]() {
         int groups{0};
         for(const auto& [id, connected] : village) {
-//            const int* id = &(pair.first);
             if(!seen[id]) {
                 fPart1(id);
                 ++groups;
