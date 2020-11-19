@@ -1,18 +1,16 @@
-#include <iostream>
 #include <functional>
+#include <iostream>
 #include <map>
 #include <regex>
 #include <sstream>
 #include <vector>
 
-
 void y17day12(std::ostream& os, std::istream& is, bool part2) {
-
     std::regex const nonDigits{R"([^\d]+)"};
     std::map<int, std::vector<int>> village;
     std::map<int, bool> seen;
 
-    for(std::string ln;std::getline(is, ln);) {
+    for(std::string ln; std::getline(is, ln);) {
         ln = std::regex_replace(ln, nonDigits, " ");
 
         std::istringstream iss{ln};
@@ -23,7 +21,6 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
         while(iss >> id)
             connected.emplace_back(id);
     }
-
 
     std::function<int(int)> const fPart1 = [&](const int&& start) {
         int total{0};
@@ -51,5 +48,4 @@ void y17day12(std::ostream& os, std::istream& is, bool part2) {
     };
 
     os << (part2 ? fPart2() : fPart1(0) + 1) << '\n';
-
 }

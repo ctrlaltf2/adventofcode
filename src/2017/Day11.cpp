@@ -6,23 +6,17 @@
 #include <sstream>
 #include <vector>
 
-#define DIR(X) {#X, dir::X}
+#define DIR(X) \
+    { #X, dir::X }
 
-enum dir {
-    n,
-    s,
-    ne,
-    nw,
-    se,
-    sw
-};
+enum dir { n, s, ne, nw, se, sw };
 
 void y17day11(std::ostream& os, std::istream& is, bool part2) {
-    std::map<std::string, int> const dirmap { DIR(n), DIR(s) , DIR(ne), DIR(nw), DIR(se), DIR(sw) };
+    std::map<std::string, int> const dirmap{DIR(n), DIR(s), DIR(ne), DIR(nw), DIR(se), DIR(sw)};
     std::string ln;
     std::getline(is, ln, '\n');
 
-    std::regex re{ R"([^news])" };
+    std::regex re{R"([^news])"};
     ln = std::regex_replace(ln, re, " ");
     std::istringstream ss{ln};
 
@@ -40,8 +34,8 @@ void y17day11(std::ostream& os, std::istream& is, bool part2) {
         switch(dirmap.at(dir)) {
             case dir::nw: --x, ++y; break;
             case dir::se: ++x, --y; break;
-            case dir::n:  ++y; break;
-            case dir::s:  --y; break;
+            case dir::n: ++y; break;
+            case dir::s: --y; break;
             case dir::ne: ++x; break;
             case dir::sw: --x; break;
         }

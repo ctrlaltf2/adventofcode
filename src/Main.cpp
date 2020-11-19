@@ -14,10 +14,10 @@ int main(int argc, char ** argv) {
     using namespace boost;
 
     std::map<std::string, std::function<void(std::ostream&, std::istream&, bool)>> const funcMap {
+        {"2015-1", y15day1},
         {"2016-1", y16day1},
         {"2016-2", y16day2},
         {"2016-12", y16day12},
-        {"2016-23", y16day23},
         {"2017-1", y17day1},
         {"2017-2", y17day2},
         {"2017-3", y17day3},

@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <cstddef>
+#include <iomanip>
 #include <iostream>
 #include <iterator>
-#include <iomanip>
 #include <numeric>
 #include <vector>
 
@@ -12,7 +12,7 @@ void y17day10(std::ostream& os, std::istream& is, bool part2) {
     std::iota(list.begin(), list.end(), 0);
 
     int pos{0}, skip{0};
-    for(char byte, ignore;is;) {
+    for(char byte, ignore; is;) {
         if(part2)
             is.get(byte);
         else {
@@ -27,7 +27,7 @@ void y17day10(std::ostream& os, std::istream& is, bool part2) {
     if(part2)
         input.insert(input.end(), {17, 31, 73, 47, 23});
 
-    for(int i = 0; i < (part2 ? 64 : 1);++i) {
+    for(int i = 0; i < (part2 ? 64 : 1); ++i) {
         for(auto& length : input) {
             std::rotate(list.begin(), std::next(list.begin(), pos), list.end());
             std::reverse(list.begin(), std::next(list.begin(), length));
@@ -41,8 +41,9 @@ void y17day10(std::ostream& os, std::istream& is, bool part2) {
     if(!part2)
         os << list[0] * list[1] << std::endl;
     else {
-        for(auto itr = list.begin();itr != list.end();itr += 16) {
-                os << std::setw(2) << std::setfill('0') << std::hex << std::accumulate(itr, itr + 16, 0, std::bit_xor<void>());
+        for(auto itr = list.begin(); itr != list.end(); itr += 16) {
+            os << std::setw(2) << std::setfill('0') << std::hex
+               << std::accumulate(itr, itr + 16, 0, std::bit_xor<void>());
         }
     }
 }

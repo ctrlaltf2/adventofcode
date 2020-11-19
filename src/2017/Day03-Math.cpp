@@ -15,7 +15,8 @@ void y17day3m(std::ostream& os, std::istream& is, bool part2) {
         return std::pow(square, 2);
     };
 
-    int const cellNum = std::ceil(std::sqrt(squareCeil(port)) / 2); // Number of squares surrounding the center number (1)
+    int const cellNum  = std::ceil(std::sqrt(squareCeil(port)) /
+                                  2); // Number of squares surrounding the center number (1)
     int const gridSize = 2 * cellNum - 1;
 
     // Bounds for line from upper right to lower left
@@ -24,11 +25,11 @@ void y17day3m(std::ostream& os, std::istream& is, bool part2) {
         return std::pow(x, 2) - x + 1;
     };
 
-    int const bottomLeft    = uRbLBound(cellNum * 2 - 1); // f(2x - 1)
-    int const topRight      = uRbLBound(cellNum * 2 - 2); // f(2(x-1))
-    int const bottomRight   = squareCeil(port);
+    int const bottomLeft  = uRbLBound(cellNum * 2 - 1); // f(2x - 1)
+    int const topRight    = uRbLBound(cellNum * 2 - 2); // f(2(x-1))
+    int const bottomRight = squareCeil(port);
     // (sqrt(bottomRight) - 1)^2 + 1
-    int const topLeft       = std::pow(std::sqrt(squareCeil(port)) - 1, 2) + 1;
+    int const topLeft = std::pow(std::sqrt(squareCeil(port)) - 1, 2) + 1;
 
     /* Find what 'quadrant' the number is in and based on that, the number's coordinates in
      * a 2d matrix where the quadrants are laid out like

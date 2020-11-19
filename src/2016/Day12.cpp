@@ -20,11 +20,13 @@ void y16day12(std::ostream& os, std::istream& is, bool part2) {
     std::map<char, int> registers;
     std::vector<Instruction> memory;
 
-    if(part2) registers['c'] = 1;
+    if(part2)
+        registers['c'] = 1;
 
-    for(std::string ln;std::getline(is, ln, '\n');) {
+    for(std::string ln; std::getline(is, ln, '\n');) {
         std::istringstream iss{ln};
-        memory.insert(memory.end(), {{get<std::string>(iss), get<std::string>(iss), get<std::string>(iss)}});
+        memory.insert(memory.end(),
+                      {{get<std::string>(iss), get<std::string>(iss), get<std::string>(iss)}});
     }
 
     int instr_ptr{0};
@@ -57,4 +59,3 @@ void y16day12(std::ostream& os, std::istream& is, bool part2) {
 
     os << registers['a'] << '\n';
 }
-

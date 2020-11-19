@@ -3,7 +3,7 @@
 
 template<int X, int Y>
 class KeyPad {
-public:
+  public:
     int maxX{X}, maxY{Y};
     char buttons[X][Y];
     KeyPad(std::initializer_list<char>&& ilist) {
@@ -12,6 +12,7 @@ public:
 };
 
 void y16day2(std::ostream& os, std::istream& is, bool part2) {
+    // clang-format off
     KeyPad<3, 3> p1pad{'1', '2', '3',
                        '4', '5', '6',
                        '7', '8', '9'};
@@ -21,10 +22,11 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
                        '5', '6', '7', '8', '9',
                        ' ', 'A', 'B', 'C', ' ',
                        ' ', ' ', 'D', ' ', ' '};
+    // clang-format on
 
     auto solve = [&os, &is](int startx, int starty, auto& pad) {
         int x{startx}, y{starty};
-        for(std::string str;std::getline(is, str, '\n');os << pad.buttons[y][x])
+        for(std::string str; std::getline(is, str, '\n'); os << pad.buttons[y][x])
             for(const auto& c : str) {
                 int dx = x, dy = y;
 
@@ -36,7 +38,6 @@ void y16day2(std::ostream& os, std::istream& is, bool part2) {
 
                 if(pad.buttons[dy][dx] != ' ')
                     x = dx, y = dy;
-
             }
     };
 
